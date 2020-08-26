@@ -1,26 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import Header from "./Header";
+import Nav from "./Nav";
+import { useDataLayerValue } from "./DataLayer";
+import { useState } from "react";
+import Results from "./Results";
+import requests from "./requests";
 
 function App() {
+  const [{ noo3s }, dispatch] = useDataLayerValue();
+  const [currentNoo3, setCurrentNoo3] = useState(requests.Trending);
+
+  console.log(currentNoo3);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <Nav setCurrentNoo3={setCurrentNoo3} />
+      <Results currentNoo3={currentNoo3} />
     </div>
   );
 }
 
 export default App;
+
+// header --done
+// list --done
+// rows
